@@ -3,7 +3,7 @@ const scriptName = __filename.slice(__dirname.length + 1);
 if ((process.argv.length < 3) || (process.argv.length > 4)) {
     console.log("\n[Script to run a simple HTTP server]");
     console.log(`\n Usage: node ${scriptName} <port> <website_path>`);
-    console.log(`\n <website_path> (optional), default: path from node was executed`);
+    console.log(`\n <website_path> (optional), default: path that node was executed`);
     process.exit(1);
 }
 
