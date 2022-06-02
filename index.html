@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import modules ex</title>
+
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>testando modulo soma</h1>
+
+    <div id="divTextboxs">
+      <input type="text" name="txtBox1" id="txtBox1" placeholder="numero..">
+      <div id="divSpace"></div>
+      <input type="text" name="txtBox2" id="txtBox2" placeholder="numero..">
+    </div>
+
+    <div id="divSpace"></div>
+
+    <div id="divButton" align="left">
+        <input type="button" id='butSomar' value="Somar">
+    </div>
+    <br>
+
+    <div id="divResult" align="left">Resultado: </div><br>
+
+
+<!-- precisa subir um servidor http p/ o diretorio local do projeto -->
+<!-- apenas executa o codigo do modulo (src="modulo.js") e nao eh possível colocar código entre as tags <script> e </script> -->
+    <!-- <script type="module" src="calc.js"></script> -->
+
+<!-- precisa subir um servidor http p/ o diretorio local do projeto ou desabilitar a seguranca do browser para acessar arquivo local-->
+<!--
+    <script type="module">
+        //import { funcSoma } from './soma.js';
+        // console.log(funcSoma(11,3));
+        //document.getElementById("butSomar").addEventListener("click", ()=>{
+        //    document.getElementById('divResult').innerText = `Resultado: ${funcSoma(Number(txtBox1.value) ,Number(txtBox2.value))}`;
+        //});
+        
+        import myUtils from './myUtils.js';
+        const funcSoma = myUtils.Calc.sum;
+        
+        //import * as myUtils from './myUtils.js';
+        //import { myUtils } from './myUtils.js';
+        //const funcSoma = myUtils.Calc.prototype.sum;
+        //const Calc = new myUtils.Calc();
+        //const funcSoma = Calc.sum;
+        //const funcSoma = myUtils.Calc.sum()    
+        
+        //console.log(myUtils.default)
+        //console.log(myUtils.Calc.sum(3,4))
+
+        document.getElementById("butSomar").addEventListener("click", ()=>{
+            //document.getElementById('divResult').innerText = `Resultado: ${myUtils.Calc.prototype.sum(Number(txtBox1.value) ,Number(txtBox2.value))}`;
+            //document.getElementById('divResult').innerText = `Resultado: ${Calc.sum(Number(txtBox1.value) ,Number(txtBox2.value))}`;
+            document.getElementById('divResult').innerText = `Resultado: ${funcSoma(Number(txtBox1.value) ,Number(txtBox2.value))}`;
+        });
+    </script>
+-->
+<!-- NAO precisa subir servidor http p/ o diretorio local do projeto mas o modulo precisa esta hospedado na net -->
+ 
+    <script type="module">     
+        // importando modulo hospedado no github utilizando o github pages
+        import { funcSoma } from 'https://llbalall.github.io/testjs/soma.js';
+        // importando modulo hospedado no github utilizando o cdn jsdelivr
+        // import { funcSoma } from 'https://cdn.jsdelivr.net/gh/llBALAll/testjs/soma.js';
+
+        //import { Calc } from 'https://llbalall.github.io/testjs/myUtils.js';
+        //console.log(Calc);
+        //const myUtils_Calc = new import_myUtils.Calc
+        
+        import myUtils from 'https://llbalall.github.io/testjs/myUtils.js';
+        const funcSoma = myUtils.Calc.sum;
+
+        document.getElementById("butSomar").addEventListener("click", ()=>{
+            document.getElementById('divResult').innerText = `Resultado: ${funcSoma(Number(txtBox1.value) ,Number(txtBox2.value))}`;
+        });
+        // console.log(funcSoma(11,3));
+    </script> 
+
+</body>
+</html>
